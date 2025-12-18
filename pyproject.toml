@@ -3,7 +3,7 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [project]
-name = "gss"
+name = "gssdata"
 version = "0.1.0"
 description = "Python client for General Social Survey (GSS) data"
 readme = "README.md"
