@@ -43,7 +43,7 @@ docs = [
 
 [project.urls]
 Homepage = "https://github.com/MaxGhenis/gssdata"
-Documentation = "https://maxghenis.github.io/gssdata"
+Documentation = "https://maxghenis.com/gssdata"
 Repository = "https://github.com/MaxGhenis/gssdata"
 Issues = "https://github.com/MaxGhenis/gssdata/issues"
 
