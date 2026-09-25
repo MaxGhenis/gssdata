@@ -19,21 +19,19 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Set up Python ${{ matrix.python-version }}
-        uses: actions/setup-python@v5
+      - name: Set up uv
+        uses: astral-sh/setup-uv@v4
         with:
           python-version: ${{ matrix.python-version }}
 
       - name: Install dependencies
-        run: |
-          python -m pip install --upgrade pip
-          pip install -e ".[dev]"
+        run: uv sync --extra dev
 
       - name: Lint with ruff
-        run: ruff check src tests
+        run: uv run ruff check src tests
 
       - name: Run tests
-        run: pytest --cov=gssdata --cov-report=xml
+        run: uv run pytest --cov=gssdata --cov-report=xml
 
       - name: Upload coverage
         uses: codecov/codecov-action@v4
@@ -46,17 +44,16 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Set up Python
-        uses: actions/setup-python@v5
+      - name: Set up uv
+        uses: astral-sh/setup-uv@v4
         with:
           python-version: "3.11"
 
       - name: Install dependencies
-        run: |
-          pip install -e ".[docs]"
+        run: uv sync --extra docs
 
       - name: Build docs
-        run: mkdocs build
+        run: uv run mkdocs build
 
       - name: Deploy to GitHub Pages
         if: github.ref == 'refs/heads/main'
